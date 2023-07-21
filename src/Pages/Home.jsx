@@ -1,12 +1,15 @@
-import { useContext } from "react"
-import { ThemeContext } from "../ThemeContext"
+// import { useContext } from "react"
 import Card from "../Components/Card"
-
-
-
+// import { UseSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleDarkMode } from "../Reducers/DarkSlice";
 
 export default function Home() {
-    const { isDarkMode, toggleDarkMode } = useContext(ThemeContext)
+    // const { isDarkMode, toggleDarkMode } = useContext(ThemeContext)
+    const isDarkMode = useSelector((state) => state.isDarkMode);
+    // console.log(counter)
+    const dispatch = useDispatch();
+
 
     const cardData = [{
         cardTitle: "What is Lorem Ipsum?",
@@ -28,7 +31,7 @@ export default function Home() {
                     <div
                         className="w-16 overflow-hidden h-8 border-2 rounded-full flex  bg-black  "
                         onClick={() => {
-                            toggleDarkMode()
+                            dispatch(toggleDarkMode())
 
                         }}
                     >
